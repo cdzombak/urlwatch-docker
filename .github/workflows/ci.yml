@@ -15,7 +15,7 @@ permissions:
   contents: read
 
 env:
-  DOCKER_PLATFORMS: "linux/amd64,linux/arm64,linux/386"
+  DOCKER_PLATFORMS: "linux/amd64,linux/arm64"
 
 jobs:
   meta:
