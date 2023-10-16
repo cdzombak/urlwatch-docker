@@ -94,7 +94,8 @@ jobs:
 
   docker:
     name: Docker Images
-    needs: [lint, meta]
+    # needs: [lint, meta]
+    needs: [meta]
     if: needs.meta.outputs.is_running_version_tag_update != 'true'
     runs-on: ubuntu-latest
     permissions:
