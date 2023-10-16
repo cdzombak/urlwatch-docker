@@ -1,21 +1,19 @@
+---
 name: Maintenance Tasks
 
-on:
+"on":
   push:
     tags:
-      - '*'
+      - "*"
 
 jobs:
-
   maintenance:
-
     runs-on: ubuntu-latest
 
     permissions:
       packages: write
 
     steps:
-
       - name: Remove old untagged images
         uses: actions/delete-package-versions@v4
         with:

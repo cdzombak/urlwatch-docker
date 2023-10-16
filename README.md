@@ -1,8 +1,8 @@
 ## Setup
 
-1. add URLs to `data/urls.yaml` (see `data/urls.example.yaml` for two simple examples or take a look at the [Jobs section](https://urlwatch.readthedocs.io/en/latest/jobs.html) in the *urlwatch* documentation for all details)
+1. add URLs to `data/urls.yaml` (see `data/urls.example.yaml` for two simple examples or take a look at the [Jobs section](https://urlwatch.readthedocs.io/en/latest/jobs.html) in the _urlwatch_ documentation for all details)
 1. copy `data/urlwatch.template.yaml` to `data/urlwatch.yaml` and configure at least one reporter (e.g. SMTP account details)
-1. run *urlwatch*:
+1. run _urlwatch_:
 
 ```shell
 docker-compose up -d
@@ -16,7 +16,7 @@ docker-compose down
 
 ### Run Without Docker Compose
 
-If you don't want to use *Docker Compose*, you can run the container with *Docker*:
+If you don't want to use _Docker Compose_, you can run the container with _Docker_:
 
 ```shell
 # run once
@@ -36,9 +36,9 @@ docker run --tty --detach --restart unless-stopped \
 docker logs --follow urlwatch
 ```
 
-### Change *cron* interval
+### Change _cron_ interval
 
-*urlwatch* runs once every 15 minutes with the provided default settings. It's possible to adjust that interval by editing the provided `crontab` file and mount in into the container.
+_urlwatch_ runs once every 15 minutes with the provided default settings. It's possible to adjust that interval by editing the provided `crontab` file and mount in into the container.
 
 For running every hour instead of the default 15 minutes, change `crontab` as following:
 
@@ -55,10 +55,10 @@ docker-compose run --rm --volume "$(pwd)/crontabfile:/crontabfile:ro" --volume "
 or add the mount to `docker-compose.yml`:
 
 ```yaml
-version: '3'
+version: "3"
 
 networks:
-    urlwatch:
+  urlwatch:
 
 services:
   urlwatch:
@@ -76,4 +76,4 @@ services:
 
 - clone repository: `git clone git@github.com:mjaschen/urlwatch-docker.git`
 - adjust interval in crontab if needed (urlwatch is started every 15 minutes with the provided default)
-- build the image and run *urlwatch*
+- build the image and run _urlwatch_
