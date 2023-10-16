@@ -43,12 +43,20 @@ ENV APP_USER urlwatch
 
 COPY --from=builder /urlwatch/dist/urlwatch /usr/local/bin/urlwatch
 
+# Allow editing via docker exec -it urlwatch urlwatch --edit:
+RUN apk add --no-cache --update nano
+ENV EDITOR=/usr/bin/nano
+
 RUN addgroup $APP_USER
 RUN adduser --disabled-password --ingroup $APP_USER $APP_USER
 
 RUN mkdir -p /data/urlwatch \
   && chown -R $APP_USER:$APP_USER /data/urlwatch \
-  && chmod 0755 /data/urlwatch
+  && chmod 0755 /data/urlwatch \
+  && mkdir -p /root/.config \
+  && ln -s /data/urlwatch /root/.config/urlwatch
+# linking from /root/.config allows using the urlwatch CLI without passing
+# --urls and --config every time
 
 VOLUME /data/urlwatch
 
